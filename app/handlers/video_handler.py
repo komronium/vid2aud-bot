@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from aiogram import Router, F
 from aiogram.types import Message, FSInputFile
 from app.services.converter import convert_video_to_audio
@@ -24,7 +25,7 @@ async def video_handler(message: Message):
         f.write(downloaded_file.read())
 
     try:
-        file_name = '.'.join(video.file_name.lower().split('.')[:-1]) or video.file_unique_id.lower()
+        file_name = Path(video.file_name or video.file_unique_id).stem.lower()
         audio_path = convert_video_to_audio(video_path, f"downloads/{file_name}")
         audio_file = FSInputFile(path=audio_path)
         await processing_msg.delete()
