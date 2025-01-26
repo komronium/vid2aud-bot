@@ -19,6 +19,7 @@ async def video_handler(message: Message):
 
     # Save the video locally
     video_path = f"downloads/{video.file_id}.mp4"
+    audio_path = None
     with open(video_path, "wb") as f:
         f.write(downloaded_file.read())
 
@@ -30,5 +31,5 @@ async def video_handler(message: Message):
         await message.reply_document(audio_file)
     finally:
         os.remove(video_path)
-        if os.path.exists(audio_path):
+        if audio_path and os.path.exists(audio_path):
             os.remove(audio_path)
