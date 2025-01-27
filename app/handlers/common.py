@@ -23,9 +23,9 @@ async def get_stats(message: types.Message):
         "`╒═════════════════════╤══════════════╕\n"
         "│ Platform Statistics │              │\n"
         "╞═════════════════════╪══════════════╡\n"
-        f"│ Total Users         │ {user_count}{9 - len(str(user_count))} │\n"
-        f"│ Users Joined Today  │ {today_joined_user_count}{9 - len(str(today_joined_user_count))} │\n"
-        f"│ Total Conversions   │ {conversion_count}{9 - len(str(conversion_count))} │\n"
+        f"│ Total Users         │ {user_count}{' ' * (9 - len(str(user_count)))} │\n"
+        f"│ Users Joined Today  │ {today_joined_user_count}{' ' * (9 - len(str(today_joined_user_count)))} │\n"
+        f"│ Total Conversions   │ {conversion_count}{' ' * (9 - len(str(conversion_count)))} │\n"
         "╘═════════════════════╧══════════════╛`"
     )
 
