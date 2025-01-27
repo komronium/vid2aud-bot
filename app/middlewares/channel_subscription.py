@@ -1,7 +1,6 @@
 from aiogram import BaseMiddleware
 from aiogram.types import Message
 from typing import Dict, Any
-import os
 from sqlalchemy.orm import sessionmaker
 
 from config import settings

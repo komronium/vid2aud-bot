@@ -14,6 +14,7 @@ class User(Base):
     full_name = Column(String)
     joined_date = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
+    conversion_count = Column(Integer, default=0)
 
 
 engine = create_engine('sqlite:///bot_users.db')
