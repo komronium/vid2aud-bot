@@ -20,13 +20,13 @@ async def get_stats(message: types.Message):
     top_5_users = await UserService().get_top_5_user()
 
     response_message1 = (
-        "`╒═════════════════════╤══════════════╕\n"
-        "│ Platform Statistics │              │\n"
-        "╞═════════════════════╪══════════════╡\n"
+        "`╒═════════════════════╤════════════╕\n"
+        "│ Platform Statistics │            │\n"
+        "╞═════════════════════╪════════════╡\n"
         f"│ Total Users         │ {user_count}{' ' * (9 - len(str(user_count)))} │\n"
         f"│ Users Joined Today  │ {today_joined_user_count}{' ' * (9 - len(str(today_joined_user_count)))} │\n"
         f"│ Total Conversions   │ {conversion_count}{' ' * (9 - len(str(conversion_count)))} │\n"
-        "╘═════════════════════╧══════════════╛`"
+        "╘═════════════════════╧════════════╛`"
     )
 
 
