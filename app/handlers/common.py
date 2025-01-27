@@ -33,13 +33,13 @@ async def get_stats(message: types.Message):
     response_message2 = (
         "`╒════════════════════════════════╕\n"
         "│ Top 5 Users                    │\n"
-        "╞════╤════════════════════╤══════╡\n"
+        "╞═══╤══════════════════════╤═════╡\n"
     )
 
     for idx, user in enumerate(top_5_users, start=1):
-        response_message2 += f"│ {idx} │ {user.full_name[:20]}{' ' * (20 - len(str(user.full_name[:20])))} │ {user.conversion_count} │\n"
+        response_message2 += f"│ {idx} │ {user.full_name[:20]}{' ' * (20 - len(str(user.full_name[:20])))} │ {user.conversion_count}{' ' * (3 - len(str(user.conversion_count)))} │\n"
 
-    response_message2 +=  "╘════╧════════════════════╧═════╛`"
+    response_message2 +=  "╘═══╧══════════════════════╧════╛`"
 
     await message.answer(response_message1, parse_mode="Markdown")
     await message.answer(response_message2, parse_mode="Markdown")
