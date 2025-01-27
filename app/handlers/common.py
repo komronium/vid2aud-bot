@@ -19,22 +19,22 @@ async def get_stats(message: types.Message):
     conversion_count = await UserService().get_conversion_count()
 
     response_message = (
-        "*Platform Statistics*\n\n"
-        f"Total Users:  *{user_count}*\n"
-        f"Users Joined Today:  *{today_joined_user_count}*\n"
-        f"Total Conversions:  *{conversion_count}*\n"
+        "<b>Platform Statistics</b>\n\n"
+        f"Total Users:  <b>{user_count}</b>\n"
+        f"Users Joined Today:  <b>{today_joined_user_count}</b>\n"
+        f"Total Conversions:  <b>{conversion_count}</b>\n"
     )
 
-    await message.answer(response_message, parse_mode="Markdown")
+    await message.answer(response_message)
 
 
 @router.message(Command(commands=['top']))
 async def get_top_users(message: types.Message):
     top_5_users = await UserService().get_top_5_user()
 
-    response_message = "*Top 5 Users*\n\n"
+    response_message = "<b>Top 5 Users</b>\n\n"
 
     for idx, user in enumerate(top_5_users, start=1):
-        response_message += f"*{idx}*. {user.full_name[:20]} - *{user.conversion_count}*\n"
+        response_message += f"<b>{idx}</b>. {user.full_name[:20]} - <b>{user.conversion_count}</b>\n"
 
-    await message.answer(response_message, parse_mode="Markdown")
+    await message.answer(response_message)
