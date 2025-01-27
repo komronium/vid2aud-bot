@@ -15,7 +15,7 @@ async def video_handler(message: Message):
         await message.reply('Sorry, but we can only process files up to 20 MB in size')
         return
 
-    processing_msg = await message.reply("*Processing... Please wait.*")
+    processing_msg = await message.reply('Processing...\nPlease wait.')
     file_path = await message.bot.get_file(video.file_id)
     downloaded_file = await message.bot.download_file(file_path.file_path)
 

@@ -19,15 +19,21 @@ async def get_stats(message: types.Message):
     conversion_count = await UserService().get_conversion_count()
     top_5_users = await UserService().get_top_5_user()
 
-    response_message = (
-        f"*Platform Statistics*\n\n"
-        f"*Total Users:* {user_count}\n"
-        f"*Users Joined Today:* {today_joined_user_count}\n"
-        f"*Total Conversions:* {conversion_count}\n\n"
-        f"*Top 5 Users:*\n"
+    response_message1 = (
+        "`╒═════════════════════╤══════════════╕\n"
+        "│ *Platform Statistics* │            │\n"
+        "╞═════════════════════╪══════════════╡\n"
+        f"│ *Total Users:*       │ {user_count} │\n"
+        f"│ *Users Joined Today:*│ {today_joined_user_count} │\n"
+        f"│ *Total Conversions:* │ {conversion_count} │\n"
+        "╘═════════════════════╧══════════════╛`"
     )
 
-    for idx, user in enumerate(top_5_users, start=1):
-        response_message += f"{idx}. {user.full_name} - {user.conversion_count} points\n"
 
-    await message.answer(response_message, parse_mode="Markdown")
+    response_message2 = f"*Top 5 Users:*\n"
+
+    for idx, user in enumerate(top_5_users, start=1):
+        response_message2 += f"{idx}. {user.full_name} - {user.conversion_count} points\n"
+
+    await message.answer(response_message1, parse_mode="Markdown")
+    await message.answer(response_message2, parse_mode="Markdown")
