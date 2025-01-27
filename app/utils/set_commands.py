@@ -5,5 +5,6 @@ async def set_default_commands(bot: Bot):
     await bot.set_my_commands([
         BotCommand(command="start", description="Start the bot"),
         BotCommand(command="help", description="Show help message"),
-        BotCommand(command="stats", description="Show bot statistics")
+        BotCommand(command="stats", description="Show bot statistics"),
+        BotCommand(command="top", description="Show top users")
     ])
