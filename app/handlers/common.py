@@ -21,11 +21,11 @@ async def get_stats(message: types.Message):
 
     response_message1 = (
         "`╒═════════════════════╤══════════════╕\n"
-        "│ *Platform Statistics* │            │\n"
+        "│ Platform Statistics │            │\n"
         "╞═════════════════════╪══════════════╡\n"
-        f"│ *Total Users:*       │ {user_count} │\n"
-        f"│ *Users Joined Today:*│ {today_joined_user_count} │\n"
-        f"│ *Total Conversions:* │ {conversion_count} │\n"
+        f"│ Total Users         │ {user_count} │\n"
+        f"│ Users Joined Today  │ {today_joined_user_count} │\n"
+        f"│ Total Conversions   │ {conversion_count} │\n"
         "╘═════════════════════╧══════════════╛`"
     )
 
