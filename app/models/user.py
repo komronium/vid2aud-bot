@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, Boolean, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, Date
 from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
+from datetime import date
 
 Base = declarative_base()
 
@@ -12,7 +12,7 @@ class User(Base):
     user_id = Column(Integer, unique=True)
     username = Column(String, nullable=True)
     full_name = Column(String)
-    joined_date = Column(DateTime, default=datetime.now)
+    joined_date = Column(Date, default=date.today)
     is_active = Column(Boolean, default=True)
     conversion_count = Column(Integer, default=0)
 
