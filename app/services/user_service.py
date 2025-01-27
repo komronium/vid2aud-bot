@@ -22,8 +22,8 @@ class UserService:
 
     async def get_today_joined_user_count(self):
         session = self.Session()
-        users = session.query(User).filter(User.joined_date == date.today())
-        return users.count()
+        count = session.query(User).filter(User.joined_date == date.today()).count()
+        return count
 
     async def get_top_5_user(self):
         session = self.Session()
