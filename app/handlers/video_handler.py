@@ -11,19 +11,13 @@ router = Router()
 @router.message(F.video)
 async def video_handler(message: Message):
     video = message.video
-    if video.file_size > 20 * 1024 * 1024:
-        await message.reply('Sorry, but we can only process files up to 20 MB in size')
-        return
-
     processing_msg = await message.reply('Processing...\nPlease wait.')
-    file_path = await message.bot.get_file(video.file_id)
-    downloaded_file = await message.bot.download_file(file_path.file_path)
+    file = await message.bot.get_file(video.file_id)
+    print(file.file_path)
 
     # Save the video locally
-    video_path = f"downloads/{video.file_id}.mp4"
-    audio_path = None
-    with open(video_path, "wb") as f:
-        f.write(downloaded_file.read())
+    video_path = file.file_path
+    aufio_path = None
 
     try:
         file_name = Path(video.file_name or video.file_unique_id).stem.lower()

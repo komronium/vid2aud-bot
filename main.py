@@ -2,6 +2,8 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
+from aiogram.client.session.aiohttp import AiohttpSession
+from aiogram.client.telegram import TelegramAPIServer
 
 from config import settings
 from app.handlers import common, video_handler, subscription
@@ -12,8 +14,14 @@ from app.middlewares.channel_subscription import ChannelSubscriptionMiddleware
 
 async def main():
     logging.basicConfig(level=logging.INFO)
+    local_server = TelegramAPIServer.from_base('http://127.0.0.1:8001')
+    session = AiohttpSession(api=local_server)
 
-    bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode='HTML'))
+    bot = Bot(
+        token=settings.BOT_TOKEN,
+        session=session,
+        default=DefaultBotProperties(parse_mode='HTML')
+    )
     dp = Dispatcher()
 
     dp.message.middleware(ThrottlingMiddleware())
@@ -28,3 +36,4 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+    
